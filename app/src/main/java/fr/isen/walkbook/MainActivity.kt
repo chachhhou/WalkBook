@@ -19,7 +19,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         addButton.setOnClickListener {
-
+            val intent = Intent(this, CreateDescriptionActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
         }
 
         profilButton.setOnClickListener {
