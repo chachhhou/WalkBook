@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WalkBook</string>
     <string name="Connexiontitle">Connexion</string>
+    <string name="welcome">Bienvenue !</string>
 </resources>
