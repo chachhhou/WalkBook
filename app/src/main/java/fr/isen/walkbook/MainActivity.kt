@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         profilButton.setOnClickListener {
-
+            val intent = Intent(this, ProfileActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
 
         wallButton.setOnClickListener {

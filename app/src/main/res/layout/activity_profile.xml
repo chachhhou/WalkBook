@@ -14,7 +14,9 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="181dp"
         android:text="@string/profileTitle"
+        android:textColor="@color/colorAccent"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +28,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="259dp"
+        android:contentDescription="@string/imageProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="76dp"
         android:layout_marginEnd="139dp"
         android:text="@string/nameID"
         android:textSize="18sp"
@@ -45,6 +48,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageProfile"
         app:layout_constraintTop_toBottomOf="@+id/profileTitle" />
+
+    <TextView
+        android:id="@+id/ageProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="158dp"
+        android:text="@string/ageProfile"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageProfile"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameID" />
 
     <TextView
         android:id="@+id/firstNameID"
@@ -62,14 +79,27 @@
 
     <TextView
         android:id="@+id/descriptionProfile"
-        android:layout_width="364dp"
-        android:layout_height="294dp"
+        android:layout_width="360dp"
+        android:layout_height="113dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="19dp"
         android:text="@string/descriptionID"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageProfile" />
+
+    <Button
+        android:id="@+id/logOutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorAccent"
+        android:text="@string/logOutButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
