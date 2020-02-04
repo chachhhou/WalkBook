@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "673179028454",
+    "firebase_url": "https://walkbook-5b2a3.firebaseio.com",
+    "project_id": "walkbook-5b2a3",
+    "storage_bucket": "walkbook-5b2a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673179028454:android:53031fde158cf5a0ebe427",
+        "android_client_info": {
+          "package_name": "fr.isen.walkbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673179028454-p76tnv9frr58487bklpcnvsbv70idsup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArWotRJcQWheMcZ3PxSn6oMdqIDd9qy2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673179028454-p76tnv9frr58487bklpcnvsbv70idsup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
