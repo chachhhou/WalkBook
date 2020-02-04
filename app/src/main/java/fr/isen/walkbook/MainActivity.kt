@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         wallButton.setOnClickListener {
-            
+
         }
     }
 }
