@@ -6,7 +6,7 @@
     <string name="nameID">Nom : %1$s</string>
     <string name="firstNameID">Prénom : </string>
     <string name="welcome">Bienvenue !</string>
-    <string name="ageProfile">Age :</string>
+    <string name="ageProfile">Age : </string>
     <string name="logOutButton">Log out</string>
     <string name="imageProfile">pictureProfile</string>
 </resources>

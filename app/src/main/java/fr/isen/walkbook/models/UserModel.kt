@@ -1,6 +1,6 @@
 package fr.isen.walkbook.models
 
-class UserModel(
+data class UserModel(
     var lastName: String? = null,
     var firstName: String? = null,
     var age: Int? = null,

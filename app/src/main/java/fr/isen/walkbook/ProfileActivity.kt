@@ -35,7 +35,7 @@ class ProfileActivity : AppCompatActivity() {
                 if(result != null) {
                   user = result.toObject(UserModel::class.java)
                     nameID.text = getString(R.string.nameID, user?.lastName)
-                    firstNameID.text = getString(R.string.firstNameID) + " " +user?.firstName
+                    firstNameID.text = getString(R.string.firstNameID) + ""+ user?.firstName
                     ageProfile.text = getString(R.string.ageProfile) + " " +user?.age
 
 
