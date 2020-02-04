@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">WalkBook</string>
     <string name="Connexiontitle">Connexion</string>
+    <string name="profileTitle">Votre profil</string>
+    <string name="descriptionID">Description : </string>
+    <string name="nameID">Nom : </string>
+    <string name="firstNameID">Prénom : </string>
     <string name="welcome">Bienvenue !</string>
 </resources>
