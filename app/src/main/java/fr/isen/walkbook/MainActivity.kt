@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         wallButton.setOnClickListener {
-
+            val intent = Intent(this, WallActivity::class.java)
+            startActivity(intent)
         }
     }
 }
