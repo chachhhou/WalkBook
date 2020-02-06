@@ -1,10 +1,11 @@
-package fr.isen.walkbook
+package fr.isen.walkbook.wall
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 
 import com.google.firebase.firestore.FirebaseFirestore
+import fr.isen.walkbook.R
 
 class WallActivity : AppCompatActivity() {
 
@@ -23,7 +24,7 @@ class WallActivity : AppCompatActivity() {
             "born" to 1815
         )
 
-// Add a new document with a generated ID
+        // Add a new document with a generated ID
         database.collection("user")
             .add(user)
             .addOnSuccessListener { documentReference ->
@@ -33,5 +34,6 @@ class WallActivity : AppCompatActivity() {
                 Log.w("TAG", "Error adding document", e)
             }
     }
+
 
 }
