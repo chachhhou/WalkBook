@@ -3,15 +3,15 @@ package fr.isen.walkbook
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_create_description.*
-import java.security.Timestamp
 import java.util.*
+
 
 class CreateDescriptionActivity : AppCompatActivity() {
 
@@ -49,14 +49,17 @@ class CreateDescriptionActivity : AppCompatActivity() {
     }
 
     fun sharePublication(){
+        val locale1 = Locale.FRANCE
+        val tz1 = TimeZone.getTimeZone("GMT")
+        val cal1 = Calendar.getInstance(tz1, locale1)
+
         val database = FirebaseFirestore.getInstance()
         // Create a new post with a description and a date
         val publication = hashMapOf(
             "description" to "test",
-            //"date" to Timestamp(Date(2020,2,10,11,33,55))
+            "date" to cal1,
             "date" to "2020/02/10"
         )
-
         // Add a new document with a generated ID
         database.collection("post")
             .add(publication)
@@ -66,7 +69,6 @@ class CreateDescriptionActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Log.w("TAG", "Error adding document", e)
             }
-
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
