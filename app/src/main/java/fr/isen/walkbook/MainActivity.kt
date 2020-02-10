@@ -1,11 +1,11 @@
 package fr.isen.walkbook
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.firebase.ui.auth.AuthUI
 import fr.isen.walkbook.wall.WallActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import com.firebase.ui.auth.AuthUI
 import java.util.*
 
 
@@ -77,12 +77,5 @@ class MainActivity : AppCompatActivity() {
                 .build(),
             RC_SIGN_IN
         )
-
-
     }
-
-
-
-
-
 }
