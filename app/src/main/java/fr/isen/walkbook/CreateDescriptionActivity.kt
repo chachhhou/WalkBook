@@ -6,7 +6,12 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_create_description.*
+import java.security.Timestamp
+import java.util.*
 
 class CreateDescriptionActivity : AppCompatActivity() {
 
@@ -14,12 +19,21 @@ class CreateDescriptionActivity : AppCompatActivity() {
         val pictureRequestCode = 1
     }
 
+    val db = FirebaseFirestore.getInstance ()
+    val storage = FirebaseStorage.getInstance()
+
+    // Create a storage reference from our app
+    val storageRef = storage.reference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_description)
 
         pictureButton.setOnClickListener {
             onChangePhoto()
+        }
+        shareButton.setOnClickListener {
+            sharePublication()
         }
     }
 
@@ -32,6 +46,27 @@ class CreateDescriptionActivity : AppCompatActivity() {
         val intentChooser = Intent.createChooser(galleryIntent, "Choose your picture library")
         intentChooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(cameraIntent))
         startActivityForResult(intentChooser, CreateDescriptionActivity.pictureRequestCode)
+    }
+
+    fun sharePublication(){
+        val database = FirebaseFirestore.getInstance()
+        // Create a new post with a description and a date
+        val publication = hashMapOf(
+            "description" to "test",
+            //"date" to Timestamp(Date(2020,2,10,11,33,55))
+            "date" to "2020/02/10"
+        )
+
+        // Add a new document with a generated ID
+        database.collection("post")
+            .add(publication)
+            .addOnSuccessListener { documentReference ->
+                Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w("TAG", "Error adding document", e)
+            }
+
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
