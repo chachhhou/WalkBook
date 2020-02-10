@@ -7,3 +7,7 @@ data class PostModel (
     val description: String? = null,
     val userId: String? = null
 )
+
+class ListPostModel (
+    var posts: ArrayList<PostModel>? = arrayListOf()
+)

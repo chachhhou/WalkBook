@@ -3,63 +3,46 @@ package fr.isen.walkbook.wall
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import android.widget.Toast
+import com.google.firebase.database.*
 
 import com.google.firebase.firestore.FirebaseFirestore
+import fr.isen.walkbook.GlobalVar
+import fr.isen.walkbook.GlobalVar.Companion.posts
 import fr.isen.walkbook.R
+import fr.isen.walkbook.models.ListPostModel
 
 class WallActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wall)
-
+        writePost()
     }
 
-    fun writeData() {
-        val database = FirebaseFirestore.getInstance()
-        // Create a new user with a first and last name
-        val user = hashMapOf(
-            "first" to "Ada",
-            "last" to "Lovelace",
-            "born" to 1815
-        )
 
-        // Add a new document with a generated ID
-        database.collection("user")
-            .add(user)
-            .addOnSuccessListener { documentReference ->
-                Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w("TAG", "Error adding document", e)
-            }
-    }
-    fun readPost(){
-        val database = FirebaseDatabase.getInstance()
+    fun writePost() {
+        var database: DatabaseReference
+        database = FirebaseDatabase.getInstance().reference
 
-        database.addValueEventListener(object: ValueEventListener {
+        database.child("posts").setValue(posts)
+        // val database = FirebaseDatabase.getInstance()
+        //  val myRef = database.getReference("posts")
+
+        database.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val posts = ArrayList<Post>()
-                for (snapshot in dataSnapshot.children) {
-                    val post = snapshot.getValue(Post::class.java)
-                    posts.add(post!!)
-                }
-                //Update the UI with received list
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val postsUpdate = dataSnapshot.getValue(ListPostModel::class.java)
+
+                GlobalVar.posts = postsUpdate?.posts
+
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                //print error.message
-            }
         })
     }
-
-    fun writePost(){
-
-    }
-
-
 }
