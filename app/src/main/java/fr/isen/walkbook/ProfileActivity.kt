@@ -6,12 +6,20 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 import fr.isen.walkbook.models.UserModel
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppCompatActivity() {
 
     val db = FirebaseFirestore.getInstance ()
+    val storage = FirebaseStorage.getInstance()
+
+    // Create a storage reference from our app
+    val storageRef = storage.reference
+
+
     var user: UserModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +46,12 @@ class ProfileActivity : AppCompatActivity() {
                     firstNameID.text = getString(R.string.firstNameID) + ""+ user?.firstName
                     ageProfile.text = getString(R.string.ageProfile) + " " +user?.age
 
+                    user?.userPicture?.let {
+                        storageRef.child(it).downloadUrl.addOnSuccessListener {
+                        Picasso.get().load(it).resize(200, 200).into(imageProfile)
+                    }.addOnFailureListener {
+                        // Handle any errors
+                    } }
 
                 }
                 Log.d("bdd","data : ${result.data}")
@@ -46,6 +60,7 @@ class ProfileActivity : AppCompatActivity() {
             .addOnFailureListener { exception ->
                 Log.w("erreur", "Error getting documents.", exception)
             }
+
 
     }
 }
