@@ -6,4 +6,5 @@
     <string name="nameID">Nom : </string>
     <string name="firstNameID">Prénom : </string>
     <string name="welcome">Bienvenue !</string>
+    <string name="textPublication">Publication</string>
 </resources>
