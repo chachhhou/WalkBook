@@ -10,4 +10,15 @@
     <string name="ageProfile">Age : </string>
     <string name="logOutButton">Log out</string>
     <string name="imageProfile">pictureProfile</string>
+    <string name="hint_email">email</string>
+    <string name="hint_password">mot de passe</string>
+    <string name="emailpassword_title_text">Connexion</string>
+    <string name="verify_email">Vérifier email</string>
+    <string name="signed_out">Deconnexion</string>
+    <string name="sign_in">Connexion</string>
+    <string name="sign_out">Connexion</string>
+    <string name="create_account">Créer un compte</string>
+    <string name="desc_firebase_lockup">Firebase logo and name</string>
+
+
 </resources>
