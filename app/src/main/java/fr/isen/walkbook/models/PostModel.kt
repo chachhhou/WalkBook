@@ -2,10 +2,10 @@ package fr.isen.walkbook.models
 
 data class PostModel (
 
-    val PathPicture: String? = null,
-    val date: String? = null,
-    val description: String? = null,
-    val userId: String? = null
+    val PathPicture: String? = "",
+    val date: String? = "",
+    val description: String? = "",
+    val userId: String? = ""
 )
 
 class ListPostModel (

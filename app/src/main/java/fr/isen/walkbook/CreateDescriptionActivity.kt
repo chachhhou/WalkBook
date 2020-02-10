@@ -7,8 +7,11 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import fr.isen.walkbook.models.ListPostModel
+import fr.isen.walkbook.models.PostModel
 import kotlinx.android.synthetic.main.activity_create_description.*
 import java.util.*
 
@@ -19,11 +22,7 @@ class CreateDescriptionActivity : AppCompatActivity() {
         val pictureRequestCode = 1
     }
 
-    val db = FirebaseFirestore.getInstance ()
-    val storage = FirebaseStorage.getInstance()
 
-    // Create a storage reference from our app
-    val storageRef = storage.reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,26 +48,17 @@ class CreateDescriptionActivity : AppCompatActivity() {
     }
 
     fun sharePublication(){
-        val locale1 = Locale.FRANCE
-        val tz1 = TimeZone.getTimeZone("GMT")
-        val cal1 = Calendar.getInstance(tz1, locale1)
+        var newPost: PostModel = PostModel("postPicture/image.jpeg","10/10/20","je suis une description","W0yFOXFJhkzpb9RzrzlU")
 
-        val database = FirebaseFirestore.getInstance()
-        // Create a new post with a description and a date
-        val publication = hashMapOf(
-            "description" to "test",
-            "date" to cal1,
-            "date" to "2020/02/10"
-        )
-        // Add a new document with a generated ID
-        database.collection("post")
-            .add(publication)
-            .addOnSuccessListener { documentReference ->
-                Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.w("TAG", "Error adding document", e)
-            }
+        writePostOnCloud(newPost)
+
+    }
+    fun writePostOnCloud(posts: PostModel) {
+        var database: DatabaseReference
+        database = FirebaseDatabase.getInstance().reference
+        Log.d("creation","juste avant de enregistrer ")
+        database.child("posts").setValue(posts)
+
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
