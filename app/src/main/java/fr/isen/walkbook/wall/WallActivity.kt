@@ -3,6 +3,10 @@ package fr.isen.walkbook.wall
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 import com.google.firebase.firestore.FirebaseFirestore
 import fr.isen.walkbook.R
@@ -33,6 +37,28 @@ class WallActivity : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Log.w("TAG", "Error adding document", e)
             }
+    }
+    fun readPost(){
+        val database = FirebaseDatabase.getInstance()
+
+        database.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val posts = ArrayList<Post>()
+                for (snapshot in dataSnapshot.children) {
+                    val post = snapshot.getValue(Post::class.java)
+                    posts.add(post!!)
+                }
+                //Update the UI with received list
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                //print error.message
+            }
+        })
+    }
+
+    fun writePost(){
+
     }
 
 
